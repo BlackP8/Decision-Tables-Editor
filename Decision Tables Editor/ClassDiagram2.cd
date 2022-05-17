@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Decision_Tables_Editor.Data_level.FileWorker">
+    <Position X="6.75" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAABAAACAAAIAAQAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Data level\FileWorker.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TablesImporter" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Decision_Tables_Editor.Data">
+    <Position X="2.75" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABgAAIAAAUAAAwAIAAAAABQAYAAEAAAEAgAAAAQAA=</HashCode>
+      <FileName>Data level\ProjectWorker.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TableEditor" />
+      <Property Name="ProjectController" />
+      <Property Name="TablesImporter" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Decision_Tables_Editor.Data_level.TreeWorker">
+    <Position X="1" Y="7.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAIAAAAAAAAAAAABAAAAgAAAAAAAA=</HashCode>
+      <FileName>Data level\TreeWorker.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Data" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Decision_Tables_Editor.Data_level.XMLWorker">
+    <Position X="3.75" Y="7.5" Width="2.25" />
+    <AssociationLine Name="Data" Type="Decision_Tables_Editor.Data" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.844" Y="7.5" />
+        <Point X="4.844" Y="7.125" />
+        <Point X="4.062" Y="7.125" />
+        <Point X="4.062" Y="6.805" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAABAAAAAAAAEABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data level\XMLWorker.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Data" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Decision_Tables_Editor.Logic_level.ActionsChecker">
+    <Position X="9.5" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAABgAAAEAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Logic level\ActionsChecker.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MainWindow" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Decision_Tables_Editor.ProjectController">
+    <Position X="6.75" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAggAAhAAAAGACAAAgIEAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic level\ProjectController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MainWindow" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Decision_Tables_Editor.Logic_level.TableEditor">
+    <Position X="5.75" Y="1" Width="2" />
+    <AssociationLine Name="MainWindow" Type="Decision_Tables_Editor.MainWindow" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="3.577" />
+        <Point X="8.817" Y="3.577" />
+        <Point X="8.817" Y="0.939" />
+        <Point X="12.151" Y="0.939" />
+        <Point X="12.151" Y="1.562" />
+        <Point X="13.75" Y="1.562" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ABAAIEAAAAAAAAAAAAAEAAAAAAAEAAAACQAQADAAAAA=</HashCode>
+      <FileName>Logic level\TableEditor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MainWindow" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Decision_Tables_Editor.Logic_level.TablesImporter">
+    <Position X="10" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAEEAAAAAQEAAAAwAAEAgAAIgAAAAAAgAA=</HashCode>
+      <FileName>Logic level\TablesImporter.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ActionsChecker" />
+      <Property Name="MainWindow" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Decision_Tables_Editor.MainWindow">
+    <Position X="13.75" Y="1.25" Width="3" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BwEAEwAAhCggQIsIAMGCSAEGCLBggwUkCAFAkkwCJk4=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

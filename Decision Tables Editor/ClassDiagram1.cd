@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="NameAndType">
+  <Class Name="Decision_Tables_Editor.Data_level.FileWorker">
+    <Position X="6.25" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAABAAACAAAIAAQAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Data level\FileWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Decision_Tables_Editor.Data">
+    <Position X="2.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAABgAAIAAAUAAAwAIAAAAABQAYAAEAAAEAgAAAAQAA=</HashCode>
+      <FileName>Data level\ProjectWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Decision_Tables_Editor.Data_level.TreeWorker">
+    <Position X="0.5" Y="6.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAIAAAAAAAAAAAABAAAAgAAAAAAAA=</HashCode>
+      <FileName>Data level\TreeWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Decision_Tables_Editor.Data_level.XMLWorker">
+    <Position X="3.75" Y="6.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAABAAAAAAAAEABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data level\XMLWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Decision_Tables_Editor.Logic_level.ActionsChecker">
+    <Position X="9" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAABgAAAEAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Logic level\ActionsChecker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Decision_Tables_Editor.ProjectController">
+    <Position X="12.75" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAggAAhAAAAGACAAAgIEAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic level\ProjectController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Decision_Tables_Editor.Logic_level.TableEditor">
+    <Position X="12" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAIEAAAAAAAAAAAAAEAAAAAAAEAAAACQAQADAAAAA=</HashCode>
+      <FileName>Logic level\TableEditor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Decision_Tables_Editor.Logic_level.TablesImporter">
+    <Position X="9" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAEEAAAAAQEAAAAwAAEAgAAIgAAAAAAgAA=</HashCode>
+      <FileName>Logic level\TablesImporter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Decision_Tables_Editor.MainWindow">
+    <Position X="17" Y="0.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>BwEAEwAAhCggQIsIAMGCSAEGCLBggwUkCAFAkkwCJk4=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
