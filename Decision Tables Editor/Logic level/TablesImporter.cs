@@ -81,7 +81,7 @@ namespace Decision_Tables_Editor.Logic_level
             catch (Exception ex)
             {
                 control.TabPages.Remove(page);
-                ActionsChecker.showMessageBox(ex.Message, "Ошибка");
+                ActionsChecker.showMessageBox(ex.StackTrace, "Ошибка");
             }
         }
 
@@ -142,6 +142,7 @@ namespace Decision_Tables_Editor.Logic_level
             string title = tableName;
             string filter;
             TabPage myTabPage = new TabPage(title);
+            myTabPage.Name = title;
             tabControl.TabPages.Add(myTabPage);
             tabControl.SelectedTab = myTabPage;
 

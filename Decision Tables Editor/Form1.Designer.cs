@@ -275,28 +275,28 @@ namespace Decision_Tables_Editor
             // importDataCSVMenu
             // 
             this.importDataCSVMenu.Name = "importDataCSVMenu";
-            this.importDataCSVMenu.Size = new System.Drawing.Size(180, 24);
+            this.importDataCSVMenu.Size = new System.Drawing.Size(137, 24);
             this.importDataCSVMenu.Text = "Из CSV";
             this.importDataCSVMenu.Click += new System.EventHandler(this.importDataCSVMenu_Click);
             // 
             // importDataSTDMenu
             // 
             this.importDataSTDMenu.Name = "importDataSTDMenu";
-            this.importDataSTDMenu.Size = new System.Drawing.Size(180, 24);
+            this.importDataSTDMenu.Size = new System.Drawing.Size(137, 24);
             this.importDataSTDMenu.Text = "Из STD";
             this.importDataSTDMenu.Click += new System.EventHandler(this.importDataSTDMenu_Click);
             // 
             // importDataEKBMenu
             // 
             this.importDataEKBMenu.Name = "importDataEKBMenu";
-            this.importDataEKBMenu.Size = new System.Drawing.Size(180, 24);
+            this.importDataEKBMenu.Size = new System.Drawing.Size(137, 24);
             this.importDataEKBMenu.Text = "Из EKB";
             this.importDataEKBMenu.Click += new System.EventHandler(this.importDataEKBMenu_Click);
             // 
             // importDataEETDMenu
             // 
             this.importDataEETDMenu.Name = "importDataEETDMenu";
-            this.importDataEETDMenu.Size = new System.Drawing.Size(180, 24);
+            this.importDataEETDMenu.Size = new System.Drawing.Size(137, 24);
             this.importDataEETDMenu.Text = "Из EETD";
             this.importDataEETDMenu.Click += new System.EventHandler(this.importDataEETDMenu_Click);
             // 
@@ -323,6 +323,7 @@ namespace Decision_Tables_Editor
             this.instructionMenu.Name = "instructionMenu";
             this.instructionMenu.Size = new System.Drawing.Size(203, 24);
             this.instructionMenu.Text = "Рук. пользователя";
+            this.instructionMenu.Click += new System.EventHandler(this.instructionMenu_Click);
             // 
             // documentationMenu
             // 
@@ -330,6 +331,7 @@ namespace Decision_Tables_Editor
             this.documentationMenu.Name = "documentationMenu";
             this.documentationMenu.Size = new System.Drawing.Size(203, 24);
             this.documentationMenu.Text = "Тех. документация";
+            this.documentationMenu.Click += new System.EventHandler(this.documentationMenu_Click);
             // 
             // splitContainer1
             // 

@@ -144,6 +144,7 @@ namespace Decision_Tables_Editor
 
             string title = currentNode.Text;
             TabPage newPage = new TabPage(title);
+            newPage.Name = title;
             tabControl.TabPages.Add(newPage);
             tabControl.SelectedTab = newPage;
 

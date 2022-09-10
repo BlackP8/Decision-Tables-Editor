@@ -18,6 +18,8 @@ namespace Decision_Tables_Editor
         private ActionsChecker actionsChecker = new ActionsChecker();
         private TableEditor tableEditor;
         private TablesImporter tableImporter = new TablesImporter();
+        private string filename;
+        private string filter;
 
         public MainWindow()
         {
@@ -148,7 +150,7 @@ namespace Decision_Tables_Editor
         private void importDataCSVMenu_Click(object sender, EventArgs e)
         {
             currentPage = tabControl1.SelectedTab;
-            string filter = "CSV Files|*.csv";
+            filter = "CSV Files|*.csv";
             ToolStripItem importDataCSV = (ToolStripItem)sender;
             tableImporter.checkPage(currentPage, tabControl1, importDataCSV.Name, filter);
         }
@@ -156,7 +158,7 @@ namespace Decision_Tables_Editor
         private void importDataSTDMenu_Click(object sender, EventArgs e)
         {
             currentPage = tabControl1.SelectedTab;
-            string filter = "XML Files (*.xml)|*.xml";
+            filter = "XML Files (*.xml)|*.xml";
             ToolStripItem importDataSTD = (ToolStripItem)sender;
             tableImporter.checkPage(currentPage, tabControl1, importDataSTD.Name, filter);
         }
@@ -164,7 +166,7 @@ namespace Decision_Tables_Editor
         private void importDataEKBMenu_Click(object sender, EventArgs e)
         {
             currentPage = tabControl1.SelectedTab;
-            string filter = "EKB Files (*.ekb)|*.ekb";
+            filter = "EKB Files (*.ekb)|*.ekb";
             ToolStripItem importDataEKB = (ToolStripItem)sender;
             tableImporter.checkPage(currentPage, tabControl1, importDataEKB.Name, filter);
         }
@@ -172,7 +174,7 @@ namespace Decision_Tables_Editor
         private void importDataEETDMenu_Click(object sender, EventArgs e)
         {
             currentPage = tabControl1.SelectedTab;
-            string filter = "XML Files (*.xml)|*.xml";
+            filter = "XML Files (*.xml)|*.xml";
             ToolStripItem importDataEETD = (ToolStripItem)sender;
             tableImporter.checkPage(currentPage, tabControl1, importDataEETD.Name, filter);
         }
@@ -180,6 +182,18 @@ namespace Decision_Tables_Editor
         private void tabControl1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             tabControl1.TabPages.Remove(tabControl1.SelectedTab);
+        }
+
+        private void instructionMenu_Click(object sender, EventArgs e)
+        {
+            filename = "user guide.pdf";
+            System.Diagnostics.Process.Start(filename);
+        }
+
+        private void documentationMenu_Click(object sender, EventArgs e)
+        {
+            filename = "documentation.pdf";
+            System.Diagnostics.Process.Start(filename);
         }
     }
 }

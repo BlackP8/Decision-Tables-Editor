@@ -10,6 +10,7 @@ using Decision_Tables_Editor.Data_level;
 using System.Collections;
 using System.IO;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace Decision_Tables_Editor.Logic_level
 {
@@ -45,7 +46,6 @@ namespace Decision_Tables_Editor.Logic_level
                     if (dataGrid.CurrentCell != null)
                     {
                         data.Rows.InsertAt(newBlankRow, dataGrid.CurrentCell.RowIndex);
-
                         data.AcceptChanges();
                     }
                     else
@@ -154,7 +154,12 @@ namespace Decision_Tables_Editor.Logic_level
                         }
                         else
                         {
-                            dataGrid.Columns.Add(columnName, columnName);
+                            DataGridViewTextBoxColumn col1 = new DataGridViewTextBoxColumn();
+                            col1.HeaderText = columnName;
+                            col1.ReadOnly = false;
+
+                            dataGrid.Columns.Insert(0, col1);
+                            //dataGrid.Columns.Add(columnName, columnName);
                             DataTable data = (DataTable)dataGrid.DataSource;
                             data.AcceptChanges();
                         }
@@ -174,9 +179,9 @@ namespace Decision_Tables_Editor.Logic_level
         public void deleteTable(TabControl tabControl, TreeView tree)
         {
             try
-            {
-                tabControl.TabPages.Remove(currentPage);
+            {                
                 data = new Data();
+                tabControl.TabPages.RemoveByKey(currentPage.Text);
                 data.delTableFromProject(currentPage.Text, tree);
             }
             catch
@@ -260,33 +265,6 @@ namespace Decision_Tables_Editor.Logic_level
                             {
                                 try
                                 {
-                                    //DataTable oldTable = (DataTable)dataGrid.DataSource;
-                                    //DataTable transTable = new DataTable();
-                                    //string[] columnNames = new string[oldTable.Rows.Count];
-
-                                    //for (int i = 0; i < oldTable.Rows.Count; i++)
-                                    //{
-                                    //    columnNames[i] = oldTable.Rows[i].ItemArray[0].ToString();
-                                    //}
-
-                                    //for (int i = 0; i < oldTable.Rows.Count; i++)
-                                    //{
-                                    //    transTable.Columns.Add(columnNames[i]);
-                                    //}
-
-                                    //for (int i = 1; i < oldTable.Columns.Count; i++)
-                                    //{
-                                    //    DataRow newRow = transTable.NewRow();
-
-                                    //    for (int j = 0; j < oldTable.Rows.Count; j++)
-                                    //    {
-                                    //        newRow[j] = oldTable.Rows[j][i];
-                                    //    }
-                                    //    transTable.Rows.Add(newRow);
-                                    //}
-                                    //dataGrid.DataSource = transTable;
-
-
                                     int columnCount = dataGrid.ColumnCount;
                                     string[] outputCsv = new string[dataGrid.Rows.Count];
 
@@ -299,12 +277,10 @@ namespace Decision_Tables_Editor.Logic_level
                                     {
                                         for (int j = 0; j < columnCount; j++)
                                         {
-                                            outputCsv[i] += dataGrid.Rows[i - 1].Cells[j].Value.ToString() + ";";
+                                            string str = Regex.Replace(dataGrid.Rows[i - 1].Cells[j].Value.ToString(), @"\s+", " ");
+                                            outputCsv[i] += str + ";";
                                         }
                                     }
-
-                                    //dataGrid.DataSource = oldTable;
-
 
                                     File.WriteAllLines(sfd.FileName, outputCsv, Encoding.UTF8);
                                     ActionsChecker.showMessageBox("Таблица экспортирована успешно!", "Предупреждение");

@@ -59,7 +59,7 @@ namespace Decision_Tables_Editor
             fileName = Path.GetFileNameWithoutExtension(filePath);
             //Populate with data here if necessary, then save to make sure it exists
             projectFile = new XDocument(
-                new XDeclaration("1.0", "utf-8", "yes"), new XComment("XML File for storing "),
+                new XDeclaration("1.0", "utf-8", "yes"), new XComment("XML File for storing"),
                 new XElement("Tables"));
             projectFile.Save(file);
 
@@ -82,10 +82,64 @@ namespace Decision_Tables_Editor
             DataGridView decisionTable = new DataGridView();
             decisionTable.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             decisionTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
             decisionTable.Name = gridName;
             page.Controls.Add(decisionTable);
             decisionTable.Dock = DockStyle.Fill;
             decisionTable.DataSource = data;
+            decisionTable.ColumnHeaderMouseDoubleClick += new DataGridViewCellMouseEventHandler(columnHeaderDoubleClick);
+            decisionTable.ColumnDividerDoubleClick += new DataGridViewColumnDividerDoubleClickEventHandler(columnDividerDoubleClick);
+            decisionTable.Focus();
+        }
+
+        private void columnDividerDoubleClick(object sender, EventArgs empty)
+        {
+            DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
+            int columnIndex = (sender as DataGridView).CurrentCell.ColumnIndex;
+            column.HeaderText = Interaction.InputBox("Пожалуйста введите новое имя столбца:", "Переименование столбца");
+            if (column.HeaderText == "")
+            {
+                ActionsChecker.showMessageBox("Вы должны ввести имя столбца! Повторите операцию!", "Ошибка");
+            }
+            else
+            {
+                (sender as DataGridView).Columns.Insert(columnIndex, column);
+                DataTable data = (DataTable)(sender as DataGridView).DataSource;
+                data.AcceptChanges();
+            }
+        }
+
+        private void columnHeaderDoubleClick(object sender, EventArgs empty)
+        {
+            string columnName = Interaction.InputBox("Пожалуйста введите новое имя столбца:", "Переименование столбца");
+
+            if (columnName == "")
+            {
+                ActionsChecker.showMessageBox("Вы должны ввести имя столбца! Повторите операцию!", "Ошибка");
+            }
+            else
+            {
+                int columnsCount = 0;
+                for (int i = 0; i < (sender as DataGridView).Columns.Count; i++)
+                {
+                    if ((sender as DataGridView).Columns[i].Name == columnName)
+                    {
+                        columnsCount++;
+                    }
+                }
+
+                if (columnsCount > 0)
+                {
+                    ActionsChecker.showMessageBox("Столбец с таким именем уже существует!", "Ошибка");
+                }
+                else
+                {
+                    int columnIndex = (sender as DataGridView).CurrentCell.ColumnIndex;
+                    DataTable data = (DataTable)(sender as DataGridView).DataSource;
+                    data.Columns[columnIndex].ColumnName = columnName;
+                    data.AcceptChanges();
+                }
+            }
         }
 
         public XmlDocument getProject(TreeView tree, ToolStripMenuItem import, ToolStripMenuItem table)
@@ -134,19 +188,27 @@ namespace Decision_Tables_Editor
             XDocument doc = worker.toXDocument(project);
             IEnumerable<XElement> parameters = doc.Element("Tables").Elements(currentPage.Text);
 
-            if (parameters.Count() > 0)
+            try
             {
-                doc.Element("Tables").Element(currentPage.Text).Remove();
-            }
+                if (parameters.Count() > 0)
+                {
+                    doc.Element("Tables").Element(currentPage.Text).Remove();
+                }
 
-            XElement xe = new XElement(currentPage.Text, currentTable.AsEnumerable().Select(row =>
-                                                            new XElement("Строка_" + currentTable.Rows.IndexOf(row),
-                                                                currentTable.Columns.Cast<DataColumn>().Select(col =>
-                                                                    new XElement(col.ColumnName, row[col])))));
-            doc.Root.Add(xe);
-            project = worker.toXmlDocument(doc);
-            project.Save(filePath);
-            treeWorker.fillTree(tree, project, fileName);
+                XElement xe = new XElement(currentPage.Text, currentTable.AsEnumerable().Select(row =>
+                                                                new XElement("Строка_" + currentTable.Rows.IndexOf(row),
+                                                                    currentTable.Columns.Cast<DataColumn>().Select(col =>
+                                                                        new XElement(col.ColumnName.Replace(" ", "_").Replace(":", "").Replace("#", "С"), row[col])))));
+
+                doc.Root.Add(xe);
+                project = worker.toXmlDocument(doc);
+                project.Save(filePath);
+                treeWorker.fillTree(tree, project, fileName);
+            }
+            catch (Exception e)
+            {
+                ActionsChecker.showMessageBox(e.Message, "Ошибка");
+            }
         }
 
         public DataTable getDataTable(string dtName)
@@ -171,7 +233,6 @@ namespace Decision_Tables_Editor
                     DataRow dr = dt.NewRow();
                     foreach (XElement xe3 in xe2.Descendants())
                     {
-                        //Controller.showMessageBox(xe3.Value.ToString(), "Ошибка");
                         dr[xe3.Name.ToString()] = xe3.Value.ToString();
                     }
                     dt.Rows.Add(dr);
@@ -191,14 +252,13 @@ namespace Decision_Tables_Editor
         }
 
         public void delTableFromProject(string name, TreeView tree)
-        {
+        { 
             XmlDocument currentProject = new XmlDocument();
             currentProject.Load(filePath);
             XDocument xproject = worker.toXDocument(currentProject);
 
             IEnumerable<XElement> parameters = xproject.Element("Tables").Elements(name);
             parameters.Remove();
-
             currentProject = worker.toXmlDocument(xproject);
             currentProject.Save(filePath);
             treeWorker.fillTree(tree, currentProject, fileName);
